@@ -37,9 +37,16 @@ This project integrates the BETSE simulation engine with Gymnasium to enable rei
 - h5py
 - numpy
 
-## Authors
+## Authors (in alphabetical order)
 
-- [Your Name](mailto:your.email@example.com)
+- Akriti Adhikari
+- Matthew Bailey
+- Brian Brown
+- Jonah Checkets
+- Charlie Clark
+- Caleb Crandal
+- Andrew Criddle
+- Jacob DeGraw
 
 ## License
 
