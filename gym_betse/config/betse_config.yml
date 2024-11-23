@@ -1,0 +1,8 @@
+# gym_betse/config/betse_config.yml
+
+# BETSE simulation configuration settings
+simulation:
+  parameter1: value1
+  parameter2: value2
+  # Add actual BETSE configuration parameters
+
