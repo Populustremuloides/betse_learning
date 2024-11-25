@@ -19,8 +19,9 @@ class BetseSimulation:
         pass
 
     def apply_action(self, action):
+        # Save current config file as yaml and possibly additionally in an organized space
         # Apply action to simulation
-        # edits the config file and runs the simulation again
+        # edits the config file in-place, no need to return a new file
         pass
 
     def step(self):
