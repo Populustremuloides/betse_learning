@@ -38,6 +38,7 @@ class DQNAgent(BaseAgent):
         return model
 
     def act(self, state):
+        # needs to specify the pharmacological intervention to BETSE
         if np.random.rand() <= self.epsilon:
             return random.randrange(self.action_size)
         state = torch.tensor(state, dtype=torch.float32).unsqueeze(0)
