@@ -18,6 +18,8 @@ class BetseSimulation:
         # Reset simulation
         pass
 
+    # action is a vector of parameters given to us by RL- need to determine sim parameters,
+    # decide order, and make sure it is consistent across all code
     def apply_action(self, action):
         # Save current config file as yaml and possibly additionally in an organized space
         #    - see also data saving functionality in betse_env
