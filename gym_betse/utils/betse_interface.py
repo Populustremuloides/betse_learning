@@ -4,6 +4,8 @@ class BetseSimulation:
     """
     Interface class for BETSE simulations.
     """
+    config_path: str
+
     def __init__(self, config_path):
         self.config_path = config_path
         self.max_steps_per_action = 10  # Example value
