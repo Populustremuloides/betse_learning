@@ -23,7 +23,7 @@ class BetseSimulation:
     def apply_action(self, action):
         # Save current config file as yaml and possibly additionally in an organized space
         #    - see also data saving functionality in betse_env
-        # Apply action to simulation
+        # Apply action to the simulation
         # edits the config file in-place, no need to return a new file
         pass
 
