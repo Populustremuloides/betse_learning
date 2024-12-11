@@ -5,7 +5,7 @@ from gym_betse.envs import BetseEnv
 from gym_betse.agents.dqn_agent import DQNAgent
 
 def main():
-    env = BetseEnv(config_path='config/betse_config.yml')
+    env = BetseEnv(config_path='config/betse_config.yaml')
     agent = DQNAgent(
         state_size=env.observation_space.shape[0],
         action_size=env.action_space.n

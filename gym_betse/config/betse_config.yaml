@@ -1,25 +1,17 @@
-# gym_betse/config/betse_config.yml
-
-# This is the starting configuration file. It is copied directly from the paper "Bioelectrical
-# control of positional information in development and regeneration: A review of conceptual
-# and computational advances. Progress in Biophysics and Molecular Biology", except for the
-# sim time settings total time, which I changed from 954.0 to 60.0.
-
-
 %YAML 1.1
 ---
 # This simulation features a small circular cluster of cells simulating numerous interventions (
 # e.g. Na+ channel opening, K+ channel opening, H,K-ATPase transporter activation,
 # Na,K-ATPase inhibtion, K+ extracellular) for 5 minute periods to show the effect of
-# these activities on reversal potentials.
+# these activities on reversal potentials.  
 
 # This config file represents a number of examples for how to
-# do things like change the K+ level of the environment,
-# dynamically change concentrations of custom substances at the environment,
-# and define and work with your own custom ion pumps/transporters and channels.
+# do things like change the K+ level of the environment, 
+# dynamically change concentrations of custom substances at the environment, 
+# and define and work with your own custom ion pumps/transporters and channels. 
 
 # Here is the sequence of manipulations during the sim:
-# 60 -120 seconds, drug 'X' is added to the environment and blocks a K+ leak channel, cells depolarize
+# 60 -120 seconds, drug 'X' is added to the environment and blocks a K+ leak channel, cells depolarize 
 # 240 -300 seconds, drug 'Y', a Na+ channel agonist, is added to the environment, cells depolarize
 # 420 - 480 seconds, the Na/K-ATPase pump is blocked by addition of ouabain, cells depolarize a wee bit
 # 600 - 660 seconds, cAMP is added to the environment, which activates an H,K-ATPase pump, cell pH increases
@@ -28,19 +20,19 @@
 # all "drugs" are added to the environment by transiently changing the environmental boundary
 # condition
 
-# This model and config file were created by Alexis Pietak, and results
+# This model and config file were created by Alexis Pietak, and results 
 # from this model are presented in Figure 3:
 
 #https://www.sciencedirect.com/science/article/pii/S0079610718300415?via%3Dihub#fig3
 
 # of the paper:
 
-# Pietak and Levin. Bioelectrical control of positional information in development
+# Pietak and Levin. Bioelectrical control of positional information in development 
 # and regeneration: A review of conceptual and computational advances. Progress in Biophysics and
 # Molecular Biology. 2018. 137:52-68.
 #https://www.sciencedirect.com/science/article/pii/S0079610718300415?via%3Dihub
 
-# Please cite and discuss the above article if you have used/adapted this model/config file in your work.
+# Please cite and discuss the above article if you have used/adapted this model/config file in your work.  
 
 # @ Alexis Pietak 2019
 
@@ -76,13 +68,13 @@ results file saving:          # Initialization and simulation exports to save.
 # INITIALIZATION SETTINGS
 # ------------------------------------------------------------------------------
 # Settings specific to the initialization.
-# @Julie -- this init and sim for the paper were really long. Not sure you needed it to be that long, so I
-# scaled all init and sim and dynamic manipulations down by a factor of 10. This is
-# similar to the sim I used in the paper https://europepmc.org/abstract/med/29626560
+# @Julie -- this init and sim for the paper were really long. Not sure you needed it to be that long, so I 
+# scaled all init and sim and dynamic manipulations down by a factor of 10. This is 
+# similar to the sim I used in the paper https://europepmc.org/abstract/med/29626560 
 # You'll need to run things 10x longer to replicate it exactly...
 init time settings:
   time step: 1.0e-2           # time step-size [s] (recommended at least 1.0e-2 or smaller)
-  total time: 300.0             # end time [s] (recommend 5 seconds or more)
+  total time: 60.0             # end time [s] (recommend 5 seconds or more)
   sampling rate: 15.0          # time interval to sample data [s] (at least value of time-step or larger)
 
 # ------------------------------------------------------------------------------
@@ -95,8 +87,8 @@ automatically run initialization: True     # If init file is not found, do you w
 sim time settings:
 
   time step: 1.0e-2       # time step-size [s] (recommended 1.0e-2 or smaller)
-  total time: 60.0         # time to end sim run [s]
-  sampling rate: 5.0      # period to sample data [s] (at least time step or larger)
+  total time: 60         # time to end sim run [s]
+  sampling rate: 1.0      # period to sample data [s] (at least time step or larger)
 
 # ---------------------------------------------------------------------------------------------------------------------
 # GENERAL OPTIONS
@@ -423,11 +415,11 @@ modulator function properties:   # set properties of modulating functions which 
 # The following global changes affect the entire cluster during a sim run (not an init):
 
 #@Julie -- this is one way you can change the K+ level of the environment, in a way that is charge neutral --
-# behind the scenes BETSE is adding K+ and equal levels of M- to the environmental square box boundary
+# behind the scenes BETSE is adding K+ and equal levels of M- to the environmental square box boundary 
 change K env:       # Change the environmental concentration of K+
   event happens: True      # turn the event on (True) or off (False)
-  change start: 780.00           # time to start change [s]
-  change finish: 840.00         # time to end change and return to original [s]
+  change start: 45.00           # time to start change [s]
+  change finish: 50.00         # time to end change and return to original [s]
   change rate: 10.0            # rate of change [s]
   multiplier: 10.0            # factor to multiply base level
 
@@ -608,13 +600,13 @@ general network:
       GJ impermeable: True   # are substances impermeable through gap junctions (i.e. due to size)
       TJ factor: 1.0       # TJ factor (relative factor to decrease tight junction permeability)
       ignore ECM: False    # treat extracellular spaces as full grid square volume (True)?
-#@Julie -- this is how you can access the environmental boundary (outer square box of the model) and
+#@Julie -- this is how you can access the environmental boundary (outer square box of the model) and 
 # temporarily change the environmental boundary concentration to a different value. This simulates adding in
 # a drug or other substance
       change at bounds:      # Change the environmental concentration of molecule from the global boundary
         event happens: True     # turn the event on (True) or off (False)
-        change start: 420.0          # time to start change [s]
-        change finish: 480.0        # time to end change and return to original [s]
+        change start: 25.0          # time to start change [s]
+        change finish: 30.0        # time to end change and return to original [s]
         change rate: 5.0           # rate of change [s]
         concentration: 1.0      # target concentration for duration of change [mmol/L]
       plotting:
@@ -643,8 +635,8 @@ general network:
       ignore ECM: False    # treat extracellular spaces as full grid square volume (True)?
       change at bounds:      # Change the environmental concentration of molecule from the global boundary
         event happens: True     # turn the event on (True) or off (False)
-        change start: 600.0          # time to start change [s]
-        change finish: 660.0        # time to end change and return to original [s]
+        change start: 35.0          # time to start change [s]
+        change finish: 40.0        # time to end change and return to original [s]
         change rate: 5.0           # rate of change [s]
         concentration: 1.0      # target concentration for duration of change [mmol/L]
       plotting:
@@ -673,8 +665,8 @@ general network:
       ignore ECM: False    # treat extracellular spaces as full grid square volume (True)?
       change at bounds:      # Change the environmental concentration of molecule from the global boundary
         event happens: True     # turn the event on (True) or off (False)
-        change start: 60.0          # time to start change [s]
-        change finish: 120.0        # time to end change and return to original [s]
+        change start: 5.0          # time to start change [s]
+        change finish: 10.0        # time to end change and return to original [s]
         change rate: 5.0           # rate of change [s]
         concentration: 1.0      # target concentration for duration of change [mmol/L]
       plotting:
@@ -703,8 +695,8 @@ general network:
       ignore ECM: False    # treat extracellular spaces as full grid square volume (True)?
       change at bounds:      # Change the environmental concentration of molecule from the global boundary
         event happens: True     # turn the event on (True) or off (False)
-        change start: 240.0          # time to start change [s]
-        change finish: 300.0        # time to end change and return to original [s]
+        change start: 15.0          # time to start change [s]
+        change finish: 20.0        # time to end change and return to original [s]
         change rate: 5.0           # rate of change [s]
         concentration: 1.0      # target concentration for duration of change [mmol/L]
       plotting:
@@ -835,7 +827,7 @@ general network:
   # substances defined in "custom biomolecules" and/or BETSE default ions. See
   # "extra_config_template.yaml" in the "extra_configs" directory for examples.
   transporters:
-#@Julie -- this is how you can define your own ion pumps and transporters, with for example, values for Km
+#@Julie -- this is how you can define your own ion pumps and transporters, with for example, values for Km 
 # or stochiometry that you've found in the literature...please see our paper and its supplement, https://www.ncbi.nlm.nih.gov/pubmed/28954851
 # for more info on how these come together!
     - name: NaKATPase         # unique identifier for the transporter **DO NOT** end with '_growth' or '_decay'
@@ -938,7 +930,7 @@ general network:
   #-----------------------------------------------------------------------------------------------------------------------
   # See "extra_config_template.yaml" in the "extra_configs"
   # directory for examples.
-
+  
   # FIXME: Fix direction surfaces, they're useful
   # FIXME: Consider having I-V curves here too...
   direction surfaces:
@@ -1078,7 +1070,7 @@ variable settings:
 
 results options:
 
-  enumerate cells: False         # number the cells on 2D plots with their simulation index?
+  enumerate cells: True         # number the cells on 2D plots with their simulation index?
 
   # FIXME do this as a profile list, add plots with legend to 1D plots
   plot cell index: 0              # State the cell index to use for single-cell time plots
@@ -1367,7 +1359,7 @@ internal parameters:
 
   alpha_NaK:  0.0   # @Julie -- default Na/K-ATPase pumps are shut off as we have defined our own custom ones...
 
-  alpha_Ca:  5.0e-8
+  alpha_Ca:  5.0e-8   
 
   substances affect Vmem: True  # @Julie -- this needs to be true so that all the custom pumps and channels
 # work properly do ionic biochemicals, metabolites and gene products affect charge state?

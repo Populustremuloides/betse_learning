@@ -1,5 +1,7 @@
 # gym_betse/utils/betse_interface.py
 
+from betse.science.wrapper import BetseWrapper
+default_log = "config/experiment_log.txt"
 class BetseSimulation:
     """
     Interface class for BETSE simulations.
@@ -10,15 +12,19 @@ class BetseSimulation:
         self.config_path = config_path
         self.max_steps_per_action = 10  # Example value
         self.max_seq_length = 50  # Example value
+        self.model = None
         self.load_simulation()
 
     def load_simulation(self):
-        # Load BETSE simulation
-        pass
+        if self.model is None:
+            self.model = BetseWrapper(self.config_path, log_filename=default_log, log_level="NONE")
+            self.model.load_seed(verbose=True)
+            self.model.load_init(verbose=True)
 
     def reset(self):
-        # Reset simulation
-        pass
+        self.model = BetseWrapper(self.config_path, log_filename=default_log, log_level="NONE")
+        self.model.load_seed(verbose=True)
+        self.model.load_init(verbose=True)
 
     # action is a vector of parameters given to us by RL- need to determine sim parameters,
     # decide order, and make sure it is consistent across all code
