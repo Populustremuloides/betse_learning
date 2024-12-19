@@ -162,7 +162,7 @@ def gather_initial_values(values_csv, params_list):
     return [df[param].iloc[0] for param in params_list]
 
 
-def update_yaml_from_paths(file_path, paths, values, write_path=None):
+def update_yaml(file_path, paths, values, write_path=None):
     """
     Updates a YAML file at specified paths with the given values.
 

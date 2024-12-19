@@ -30,17 +30,17 @@ PARAMETER LIST
 
 The path string begins with a root:
 
-config/general network/biomolecules/change at bounds/concentration\_Y
+**config**/general network/biomolecules/change at bounds/concentration/_Y
 
  which at this point can only be defined to be “config” or “grn”. If the root is config, then it simply traverses the .YAML file passed into the python parameter insertion function. If the root is “grn”, the function will instead open the config file at the path listed under “gene regulatory network settings/gene regulatory network config” and traverse the path from there. 
 
 The body of the path defines the sequence of nested objects that must be accessed to arrive at the location of the desired parameter in the config file:
 
-config/general network/biomolecules/change at bounds/concentration\_Y
+config/**general network/biomolecules/change at bounds/concentration/**_Y
 
 Finally, parameters optionally have an underscore at the end of the path:
 
-config/general network/biomolecules/change at bounds/concentration\_Y
+config/general network/biomolecules/change at bounds/concentration/***_Y***
 
 The string after the underscore is a name, used for identifying the parameter among duplicate parameters typical of a list of chemical definitions in BETSE config files. Specifically, the “biomolecules” section in the config file is not an object, but a YAML list of molecules with specific attributes. Each object in the list has a “name” field, and the string after the underscore is matched with the “name” in order to proceed with the search.
 
